@@ -1,0 +1,5 @@
+name: SkryptCoreAPI
+version: 1.7.3
+author: Skrypt
+website: www.skrypt.net
+main: net.skrypt.spigot.pub.skryptcore.SkryptCoreAPI
