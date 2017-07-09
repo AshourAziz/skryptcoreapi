@@ -1,5 +1,6 @@
 package net.skrypt.spigot.skryptcore;
 
+import net.skrypt.spigot.skryptcore.api.block.listener.BlockListener;
 import net.skrypt.spigot.skryptcore.api.enums.ServerVersion;
 import net.skrypt.spigot.skryptcore.api.gui.GUI;
 import net.skrypt.spigot.skryptcore.api.gui.listener.GUIListener;
@@ -17,8 +18,9 @@ public class API {
 		PluginManager pm = SkryptCoreAPI.getInstance().getServer().getPluginManager();
 		pm.registerEvents(new GUIListener(), SkryptCoreAPI.getInstance());
 		pm.registerEvents(new InventoryListener(), SkryptCoreAPI.getInstance());
-		//pm.registerEvents(new BlockListener(), SkryptCoreAPI.getInstance());
-		//pm.registerEvents(new PlayerListener(), SkryptCoreAPI.getInstance());
+		pm.registerEvents(new BlockListener(), SkryptCoreAPI.getInstance());
+		pm.registerEvents(new net.skrypt.spigot.skryptcore.api.block.listener.PlayerListener(), SkryptCoreAPI.getInstance());
+		pm.registerEvents(new net.skrypt.spigot.skryptcore.api.itemstack.listener.PlayerListener(), SkryptCoreAPI.getInstance());
 	}
 	
 	public static void disable() {
