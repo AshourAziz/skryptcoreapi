@@ -24,6 +24,7 @@ public class CustomItemStackAPI {
 	}
 	
 	public void add(CustomItemStack cis) {
+		cis.setPlugin(this.plugin);
 		items.get(this.plugin).put(cis.getClass(), cis);
 	}
 	
