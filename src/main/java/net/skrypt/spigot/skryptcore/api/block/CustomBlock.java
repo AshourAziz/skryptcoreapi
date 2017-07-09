@@ -22,7 +22,7 @@ import java.util.HashMap;
 public abstract class CustomBlock implements Serializable {
 	
 	// Private Static Variables
-	public static HashMap<ItemStack, CustomBlock> blocks = new HashMap<>();
+	public static HashMap<Class<? extends CustomItemStack>, CustomBlock> blocks = new HashMap<>();
 	public static HashMap<Location, CustomBlock> placedBlocks = new HashMap<>();
 	
 	// Private Variables
@@ -32,7 +32,7 @@ public abstract class CustomBlock implements Serializable {
 	public CustomBlock(CustomItemStack customItemStack) {
 		this.customItemStack = customItemStack;
 		
-		blocks.put(customItemStack.getItemStack(), this);
+		blocks.put(customItemStack.getClass(), this);
 	}
 	
 	/**
