@@ -1,5 +1,5 @@
 name: SkryptCoreAPI
-version: 1.7.3
+version: 1.8.0
 author: Skrypt
 website: www.skrypt.net
-main: net.skrypt.spigot.pub.skryptcore.SkryptCoreAPI
+main: net.skrypt.spigot.skryptcore.SkryptCoreAPI

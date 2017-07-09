@@ -6,9 +6,38 @@
 
     <groupId>net.skrypt.spigot</groupId>
     <artifactId>skryptcore</artifactId>
-    <version>1.7.3</version>
+    <version>1.8.0</version>
+
+    <distributionManagement>
+        <repository>
+            <id>vps.skrypt.net</id>
+            <url>ftp://vps.skrypt.net/repositories/</url>
+        </repository>
+    </distributionManagement>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <build>
+        <extensions>
+        <!-- Enabling the use of SSH -->
+        <extension>
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-ftp</artifactId>
+
+            <version>2.12</version>
+        </extension>
+    </extensions>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
