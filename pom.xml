@@ -6,7 +6,7 @@
 
     <groupId>net.skrypt.spigot</groupId>
     <artifactId>skryptcore</artifactId>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
 
     <distributionManagement>
         <repository>
@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.0.0-M1</version>
                 <configuration>
                 </configuration>
             </plugin>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.12-R0.1-SNAPSHOT</version>
+            <version>1.12.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -76,6 +76,12 @@
             <artifactId>HikariCP</artifactId>
             <version>2.6.2</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.0.0-M1</version>
         </dependency>
     </dependencies>
 </project>
