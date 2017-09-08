@@ -71,5 +71,6 @@ public interface NBTItemStack {
 	String getString(String key) throws NBTException;
 	boolean getBoolean(String key) throws NBTException;
 	
+	boolean contains(String key) throws NBTException;
 	boolean hasNBT();
 }

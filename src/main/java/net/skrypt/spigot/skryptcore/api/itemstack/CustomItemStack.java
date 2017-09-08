@@ -4,6 +4,7 @@ import net.skrypt.spigot.skryptcore.api.exceptions.OutdatedVersionException;
 import net.skrypt.spigot.skryptcore.api.exceptions.UnsupportedVersionException;
 import net.skrypt.spigot.skryptcore.api.exceptions.VersionException;
 import net.skrypt.spigot.skryptcore.api.nbt.NBTItemStack;
+import net.skrypt.spigot.skryptcore.api.nbt.exceptions.NBTException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -26,19 +27,19 @@ public abstract class CustomItemStack implements Serializable {
 	// Private Variables
 	private Plugin plugin;
 	
-	private String name;
+	//private int id;
 	private Material material;
 	private short durability;
 	
+	private String name;
 	private ArrayList<String> lore;
 	
 	/**
 	 * Creates an instance of CustomItemStack.
-	 * @param name Name of the item.
 	 * @param material Material of the item.
 	 */
-	public CustomItemStack (String name, Material material) {
-		this.name = name;
+	public CustomItemStack (Material material) {
+		//this.id = id;
 		this.material = material;
 	}
 	
@@ -93,6 +94,36 @@ public abstract class CustomItemStack implements Serializable {
 	}
 	
 	/**
+	 * Compares the custom ItemStack's Bukkit Instance to the provided Bukkit ItemStack and returns if these are same.
+	 * @param other Bukkit ItemStack
+	 * @return
+	 */
+	public boolean isSame(ItemStack other) {
+		ItemStack itemStack = getItemStack();
+		try {
+			NBTItemStack nbt = NBTItemStack.fromBukkit(itemStack);
+			NBTItemStack nbtOther = NBTItemStack.fromBukkit(other);
+			
+			if (!nbt.contains("custom") || !nbtOther.contains("custom") ||
+					!nbt.contains("plugin") || !nbtOther.contains("plugin") ||
+					!nbt.contains("class") || !nbtOther.contains("class"))
+				return false;
+			
+			return (nbt.getString("plugin").equalsIgnoreCase(nbtOther.getString("plugin")) &&
+					nbt.getString("class").equalsIgnoreCase(nbtOther.getString("class")));
+			
+		} catch (UnsupportedVersionException e) {
+			e.printUserFriendlyMessage();
+		} catch (OutdatedVersionException e) {
+			e.printUserFriendlyMessage();
+		} catch (NBTException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * Returns a Bukkit ItemStack instance of the custom item.
 	 * @return Bukkit ItemStack
 	 */
@@ -111,6 +142,7 @@ public abstract class CustomItemStack implements Serializable {
 			NBTItemStack nbt = NBTItemStack.fromBukkit(itemStack);
 			
 			nbt.setBoolean("custom", true);
+			//nbt.setInt("id", this.id);
 			nbt.setString("plugin", this.plugin.getName());
 			nbt.setString("class", this.getClass().getName());
 			

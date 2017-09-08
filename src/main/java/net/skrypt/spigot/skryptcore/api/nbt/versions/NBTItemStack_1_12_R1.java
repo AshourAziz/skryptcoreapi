@@ -202,6 +202,16 @@ public class NBTItemStack_1_12_R1 implements NBTItemStack {
 	}
 	
 	@Override
+	public boolean contains(String key) throws NBTException {
+		getTag();
+		
+		if (item.getTag() == null)
+			throw new NoNBTTagsException();
+		
+		return item.getTag().hasKey(key);
+	}
+	
+	@Override
 	public boolean hasNBT() {
 		getTag();
 		if (item.getTag() == null)
