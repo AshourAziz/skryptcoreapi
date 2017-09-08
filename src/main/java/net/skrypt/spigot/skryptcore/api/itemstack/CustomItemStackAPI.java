@@ -28,10 +28,6 @@ public class CustomItemStackAPI {
 		items.get(this.plugin).put(cis.getClass(), cis);
 	}
 	
-	public ItemStack getItemStack(Class<? extends CustomItemStack> cis) {
-		return get(cis).getItemStack();
-	}
-	
 	public CustomItemStack get(Class<? extends CustomItemStack> cis) {
 		return items.get(this.plugin).get(cis);
 	}
