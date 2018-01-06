@@ -14,6 +14,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.Plugin;
 
+import net.skrypt.spigot.skryptcore.SkryptCoreAPI;
+
 public class UnsupportedVersionException extends VersionException {
 
 	private String message = "This minecraft version is not yet supported by the API. Please contact the developer of the plugin.";
